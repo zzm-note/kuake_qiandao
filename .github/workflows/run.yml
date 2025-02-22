@@ -19,7 +19,7 @@ jobs:
         with:
           enable-cache: false
           cache-dependency-glob: false
-          
+
 
       - name: Check UV version
         run: uv --version  # 检查 UV 版本
@@ -29,7 +29,7 @@ jobs:
 
       - name: Run Python script with UV
         env:
-          kps: ${{ secrets.KPS }}
-          sign: ${{ secrets.SIGN }}
-          vcode: ${{ secrets.VCODE }}
+          QUARK_KPS: ${{ secrets.QUARK_KPS }}
+          QUARK_SIGN: ${{ secrets.QUARK_SIGN }}
+          QUARK_VCODE: ${{ secrets.QUARK_VCODE }}
         run: uv run main.py  # 使用 UV 运行 Python 脚本
