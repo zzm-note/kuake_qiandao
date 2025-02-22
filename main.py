@@ -11,9 +11,10 @@ import os
 kps = os.getenv("QUARK_KPS")
 sign = os.getenv("QUARK_SIGN")
 vcode = os.getenv("QUARK_VCODE")
+
 if kps is None or sign is None or vcode is None:
-    logger.error("请设置 QUARK_KPS")
-    raise ValueError("请设置 QUARK_KPS")
+    logger.error("请设置 QUARK_KPS 或者 QUARK_SIGN 或者 QUARK_VCODE")
+    raise ValueError("请设置 QUARK_KPS 或者 QUARK_SIGN 或者 QUARK_VCODE")
 
 # 邮箱通知
 SMTP_SERVER = os.getenv("SMTP_SERVER")

@@ -31,6 +31,7 @@ jobs:
         env:
           QUARK_KPS: ${{ secrets.QUARK_KPS }}
           QUARK_SIGN: ${{ secrets.QUARK_SIGN }}
+          QUARK_VCODE: ${{ secrets.QUARK_VCODE }}
           SMTP_SERVER: ${{ secrets.SMTP_SERVER }}
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           EMAIL: ${{ secrets.EMAIL }}
