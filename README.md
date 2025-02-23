@@ -1,4 +1,8 @@
 # 夸克自动签到
+该仓库是对下面开源项目的精简版本，主要功能是自动签到，并通知到邮箱。
+## 参考开源项目
+
+[Auto_Check_In](https://github.com/BNDou/Auto_Check_In/blob/main/checkIn_Quark.py)
 
 ## 配置
 
@@ -22,11 +26,11 @@
 | QUARK_VCODE |  抓包参数的vcode  |
 
 ### 可选配置
+
 > qq邮箱可访问网页的，然后点击头像，进入账号与安全，如图获取授权码即密码
 > 服务器：smtp.qq.com 端口：587
 > **其他邮箱自行搜索**
 ![邮箱](docs/邮箱配置.png)
-
 
 |   邮件通知配置    |    说明     |
 |:-----------:|:---------:|
@@ -36,8 +40,5 @@
 |  PASSWORD   |  邮箱的授权码   |
 
 ## Github Actions自动签到配置
+
 ![img.png](docs/secrets.png)
-
-## 参考开源项目
-
-[Auto_Check_In](https://github.com/BNDou/Auto_Check_In/blob/main/checkIn_Quark.py)
