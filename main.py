@@ -18,9 +18,15 @@ if kps is None or sign is None or vcode is None:
 
 # 邮箱通知
 SMTP_SERVER = os.getenv("SMTP_SERVER")
-SMTP_PORT = os.getenv("SMTP_PORT", default=587)  # 587 TLS 端口，使用 465 代表 SSL
+SMTP_PORT = os.getenv("SMTP_PORT", default=25)  # 587 TLS 端口，使用 465 代表 SSL
 EMAIL = os.getenv("EMAIL")  # 你的邮箱
 PASSWORD = os.getenv("PASSWORD")  # 你的 SMTP 授权码（不是邮箱密码）
+
+# 测试环境
+# SMTP_SERVER = "smtp.163.com"
+# SMTP_PORT = 25
+# EMAIL = "xxx@163.com"  # 你的邮箱
+# PASSWORD = "xxx"  # 你的 SMTP 授权码（不是邮箱密码）
 
 config_is_ok = False
 
@@ -70,13 +76,12 @@ def send_email(body: str):
 
         # 连接 SMTP 服务器
         server = smtplib.SMTP(SMTP_SERVER, int(SMTP_PORT))
-        if int(SMTP_PORT) == 587:
-            server.starttls()  # 启用 TLS 加密
+        server.starttls()
         server.login(EMAIL, PASSWORD)  # 登录 SMTP 服务器
         server.sendmail(EMAIL, EMAIL, msg.as_string())  # 发送邮件
         server.quit()  # 关闭连接
     except Exception as e:
-        print(f"邮件发送失败: {e}")
+        logger.error(f"邮件发送失败: {e}")
 
 
 def user_info():
