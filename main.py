@@ -135,10 +135,10 @@ def user_info():
                            f"{human_unit(data['total_capacity'])}, 使用容量：{human_unit(data['use_capacity'])}, "
                            f"使用百分比：{data['use_capacity'] / data['total_capacity'] * 100:.2f}%")
         logger.info(notify_message)
-        if config_is_ok:
-            send_email(notify_message)
-        else:
-            serverJ("夸克网盘自动签到", notify_message)
+        # if config_is_ok:
+        #     send_email(notify_message)
+        # else:
+        serverJ("夸克网盘自动签到", notify_message)
 
 
 def checkin():
