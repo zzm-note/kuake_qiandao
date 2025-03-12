@@ -3,7 +3,7 @@ name: 夸克网盘自动签到脚本
 on:
   schedule:
     # 定时执行，默认UTC时区， 中国时区需要+8小时， 中国时间每天10:05执行
-    - cron: '5 2 * * *'
+    - cron: '35 3 * * *'
 
   workflow_dispatch:  # 允许手动触发
 jobs:
@@ -36,4 +36,5 @@ jobs:
           SMTP_PORT: ${{ secrets.SMTP_PORT }}
           EMAIL: ${{ secrets.EMAIL }}
           PASSWORD: ${{ secrets.PASSWORD }}
+          SERVERJ_KEY: ${{ secrets.SERVERJ_KEY }}
         run: uv run main.py  # 使用 UV 运行 Python 脚本

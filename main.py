@@ -33,6 +33,23 @@ config_is_ok = False
 if SMTP_SERVER is not None and SMTP_PORT is not None and EMAIL is not None and PASSWORD is not None:
     config_is_ok = True
 
+PUSH_KEY = os.getenv("SERVERJ_KEY")
+
+
+def serverJ(title, content):
+    print("serverJ服务启动")
+    try:
+        data = {"text": title, "desp": content.replace("\n", "\n\n")}
+        response = httpx.post(f"https://sc.ftqq.com/{PUSH_KEY}.send",
+                              data=data).json()
+        if response['data']['errno'] == 0:
+            print('推送成功！')
+        else:
+            print('推送失败！')
+    except Exception as e:
+        print(f"报错信息:{e}")
+        print('推送失败！')
+
 
 def query_balance():
     """
@@ -120,6 +137,8 @@ def user_info():
         logger.info(notify_message)
         if config_is_ok:
             send_email(notify_message)
+        else:
+            serverJ("夸克网盘自动签到", notify_message)
 
 
 def checkin():
